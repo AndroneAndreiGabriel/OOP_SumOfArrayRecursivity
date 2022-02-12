@@ -10,6 +10,8 @@ namespace OOP_SumOfArrayRecursivity
     {
         public static int SumOfArray(int[] array, int size, int index = 0)
         {
+            int sum = 0;
+
             if (array is null || array.Length == 0)
             {
                 return -1;
@@ -20,9 +22,11 @@ namespace OOP_SumOfArrayRecursivity
                 return array[index];
             }
 
-            int sum = SumOfArray(array, size, index + 1);
-
-            sum += array[index];
+            if (index < array.Length)
+            {
+                sum = SumOfArray(array, size, index + 1);
+                sum += array[index];
+            }
 
             return sum;
         }
